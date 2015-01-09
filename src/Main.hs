@@ -1,2 +1,9 @@
 module Main where
-main = putStrLn "hello world!"
+
+type Proc = IO ()
+
+hello :: Proc
+hello = putStrLn "hello world!"
+
+main :: Proc
+main = hello
