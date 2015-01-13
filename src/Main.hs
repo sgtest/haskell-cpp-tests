@@ -1,22 +1,23 @@
 module Main where
 
-type Proc = IO ()
-
 infixr 9 %%
 
+type Proc = IO ()
 (%%) :: (a -> b) -> a -> b
+identity :: a -> a
+dump :: String -> Proc
+hello :: Proc
+main :: Proc
+
 a %% b = a b
 
-identity :: a -> a
 identity = id
 
-dump :: String -> Proc
-dump = putStrLn
+dump "" = putStrLn ""
+dump x  = putStrLn x
 
-hello :: Proc
 hello = identity %% dump %% identity %% "hello world!"
 
-main :: Proc
 main = do
   foo <- hello
   bar <- hello
