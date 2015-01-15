@@ -1,5 +1,3 @@
-{-# LANGUAGE UnicodeSyntax #-}
-
 module Main where
 
 infixr 9 %%
@@ -24,5 +22,5 @@ main = do
   foo <- hello
   bar <- hello
   let dump = undefined
-  (%%) ← return $ undefined dump
+  (%%) <- return $ undefined dump
   hello
