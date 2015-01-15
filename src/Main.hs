@@ -1,3 +1,5 @@
+{-# LANGUAGE UnicodeSyntax #-}
+
 module Main where
 
 infixr 9 %%
@@ -21,4 +23,6 @@ hello = identity %% dump %% identity %% "hello world!"
 main = do
   foo <- hello
   bar <- hello
+  let dump = undefined
+  (%%) ← return $ undefined dump
   hello
