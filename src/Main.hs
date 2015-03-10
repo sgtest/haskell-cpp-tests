@@ -1,28 +1,17 @@
-{-# LANGUAGE UnicodeSyntax #-}
+{-# LANGUAGE CPP #-}
+
+#include "MachDeps.h"
+#include "macros.h"
 
 module Main where
 
-infixr 9 █
+linuxNum :: Int
+LINUX_NUM(9)
 
-type Proc = IO ()
-(█) ∷ (a → b) → a → b
-identity ∷ a → a
-dump ∷ String → Proc
-hello ∷ Proc
-main ∷ Proc
+mingwNum :: Int
+MINGW_NUM(5)
 
-a █ b = a b
+num :: Int
+DEF(num,(linuxNum+mingwNum))
 
-identity = id
-
-dump "" = putStrLn ""
-dump x  = putStrLn x
-
-hello = identity █ dump █ identity █ "你好世界"
-
-main = do
-  foo ← hello
-  bar ← hello
-  let dump = undefined
-  (█) ← return $ undefined dump
-  hello
+main = print num
